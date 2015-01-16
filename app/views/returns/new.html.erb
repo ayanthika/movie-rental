@@ -1,15 +1,4 @@
-<h2>Movies You Would Like To Rent</h2>
+<h3 style="padding-top: 30px; padding-left: 60px; font-size: 1.5em;">Select A Movie To Return</h3>
 
-<%= form_for @return do |f| %>
-<p>
-  <%= f.label :movie_id, "Movie" %>
-  <%= f.collection_select :movie_id, Movie.all, :id, :title, :prompt=>true %>
-</p>
+<%= render 'form' %>
 
-<p>
-  <%= f.label :return_date %>:
-  <%= select_date Date.today %><br>
-</p>
-
-  <%= f.submit "Return Movie" %>
-<% end %>

@@ -1,0 +1,33 @@
+<%= form_for(@rental, :html => { :multipart => true }) do |f| %>
+  <% if @rental.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rental.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+      <ul>
+      <% @rental.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+<% end %>
+
+  <div class="form-group" style="padding-top: 30px; padding-left: 60px; font-size: 1.5em;">
+    <%= f.label :movie_id, "Movie" %><br>
+    <%= f.collection_select :movie_id, Movie.all, :id, :title, :prompt=>true, class: "form-control" %>
+  </div>
+  
+  <div class="form-group" style="padding-top: 30px; padding-left: 60px; font-size: 1.5em;">
+    <%= f.label :checkout_date %>:<br>
+    <%= select_date Date.today, :class => "form-control" %>
+  </div>
+  
+  <div class="form-group" style="padding-top: 30px; padding-left: 60px;">
+    <%= f.submit  "Checkout", class: "btn btn-primary" %>
+    <%= link_to 'Back', movies_path, class: "btn btn-default" %>
+  </div>
+<% end %>
+
+
+
+
+

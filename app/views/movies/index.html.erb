@@ -1,34 +1,34 @@
-<h1>Welcome to MovieRental</h1>
+<h4>All Movies</h4>
 
-<h2>All Movies</h2>
-
-<%= form_tag movies_path, :method => 'get' do %>
+<div class="search-bar">
+  <p>
+  <%= form_tag movies_path, :method => 'get' do %>
   <%= hidden_field_tag :direction, params[:direction] %>
   <%= hidden_field_tag :sort, params[:sort] %>
   <p>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :name => nil %>
   </p>
+</div>
 <% end %>
 
-<table>
+<table class="table table-striped">
   <tr>
-    <th><%= sortable "Title" %></th>
-    <th><%= sortable "Genre" %></th>
-    <th><%= sortable "Rating" %></th>
+    <th>Sort By:<%= sortable "Title" %></th>
+    <th>Sort By:<%= sortable "Genre" %></th>
+    <th>Sort By:<%= sortable "Rating" %></th>
     <th>Availabilty</th>
   </tr>
 
 <% @movies.each do |movie| %>
-<tr>
-  <td> <%= movie.title %> </td>
-  <td> <%= movie.genre %> </td>
-  <td> <%= movie.rating %> </td>
-  <td> <%= movie.status %> </td>
+  <tr>
+    <td> <%= movie.title %> </td>
+    <td> <%= movie.genre %> </td>
+    <td> <%= movie.rating %> </td>
+    <td> <%= movie.status %> </td>
   <% end %>
-</tr>
+  </tr>
 
 </table>
 
-<%= link_to "Rent A Movie", new_rental_path %>
-<%= link_to "Return A Movie", new_return_path %>
+
