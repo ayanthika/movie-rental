@@ -1,18 +1,15 @@
 <h2>Movies You Would Like To Rent</h2>
 
-<%= form_for @rental do |f| %>
+<%= form_for @return do |f| %>
 <p>
   <%= f.label :movie_id, "Movie" %>
   <%= f.collection_select :movie_id, Movie.all, :id, :title, :prompt=>true %>
 </p>
 
 <p>
-  <%= f.label :checkout_date %>:
+  <%= f.label :return_date %>:
   <%= select_date Date.today %><br>
 </p>
 
-  <%= f.submit "Checkout" %>
+  <%= f.submit "Return Movie" %>
 <% end %>
- 
-
- 
